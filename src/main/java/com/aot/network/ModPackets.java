@@ -46,15 +46,15 @@ public class ModPackets {
 
         if (power.transformed) {
             player.setHealth(player.getMaxHealth());
-            player.getWorld().spawnParticles(ParticleTypes.FLASH,
+            player.getServerWorld().spawnParticles(ParticleTypes.FLASH,
                     player.getX(), player.getY() + 1.5, player.getZ(), 25, 1.2, 2.0, 1.2, 0.05);
-            player.getWorld().spawnParticles(ParticleTypes.CLOUD,
+            player.getServerWorld().spawnParticles(ParticleTypes.CLOUD,
                     player.getX(), player.getY() + 1.0, player.getZ(), 60, 1.8, 2.5, 1.8, 0.08);
             player.getWorld().playSound(null, player.getBlockPos(),
                     SoundEvents.ENTITY_LIGHTNING_BOLT_THUNDER, SoundCategory.PLAYERS, 0.9f, 0.7f);
             player.sendMessage(Text.translatable("message.aot.transformed"), true);
         } else {
-            player.getWorld().spawnParticles(ParticleTypes.CLOUD,
+            player.getServerWorld().spawnParticles(ParticleTypes.CLOUD,
                     player.getX(), player.getY() + 1.0, player.getZ(), 40, 1.5, 2.0, 1.5, 0.06);
             player.sendMessage(Text.translatable("message.aot.detransformed"), true);
         }
@@ -110,7 +110,7 @@ public class ModPackets {
                 for (int i = 0; i < 3; i++) {
                     BlockPos pos = base.up(i);
                     // Just particle feedback for mid version (real version would place custom blocks)
-                    player.getWorld().spawnParticles(ParticleTypes.END_ROD,
+                    player.getServerWorld().spawnParticles(ParticleTypes.END_ROD,
                             pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
                             12, 0.3, 0.5, 0.3, 0.02);
                 }
@@ -120,7 +120,7 @@ public class ModPackets {
 
         player.getWorld().playSound(null, player.getBlockPos(),
                 SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.PLAYERS, 1.1f, 0.6f);
-        player.getWorld().spawnParticles(ParticleTypes.END_ROD,
+        player.getServerWorld().spawnParticles(ParticleTypes.END_ROD,
                 player.getX(), player.getY() + 1, player.getZ(), 25, 1.0, 1.5, 1.0, 0.05);
     }
 }
